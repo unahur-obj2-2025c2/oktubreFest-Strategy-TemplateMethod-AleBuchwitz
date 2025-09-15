@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unahur.obj2.marcas.jarra.Jarra;
+import ar.edu.unahur.obj2.marcas.marcas.Marca;
 import ar.edu.unahur.obj2.marcas.nacionalidad.Nacionalidad;
 
 public class Persona {
@@ -37,6 +38,14 @@ public class Persona {
     }
 
     public Boolean estaEbrio() {
-        return jarrasCompradas.stream().mapToDouble(j -> j.getCapacidadDeLitros()).sum() * peso > this.getNivelDeAguante();
+        return jarrasCompradas.stream().mapToDouble(j -> j.getLitros()).sum() * peso > this.getNivelDeAguante();
+    }
+
+    public Double totalAlcoholConsumido() {
+        return jarrasCompradas.stream().mapToDouble(j -> j.getLitros()).sum();
+    }
+
+    public Boolean leGustaLaMarca(Marca marca) {
+        return nacionalidad.leGustaLaMarcaDeCeeveza(marca);
     }
  }

@@ -1,22 +1,25 @@
 package ar.edu.unahur.obj2.marcas.jarra;
 
-import ar.edu.unahur.obj2.marcas.Marca;
+import ar.edu.unahur.obj2.marcas.marcas.Marca;
 
 public class Jarra {
-    private Double capacidadDeLitros;
+    private Double litros;
     private Marca marca;
     
     public Jarra(Double capacidadDeLitros, Marca marca) {
-        this.capacidadDeLitros = capacidadDeLitros;
+        this.litros = capacidadDeLitros;
         this.marca = marca;
     }
 
-    public Double getCapacidadDeLitros() {
-        return capacidadDeLitros;
+    public Double getLitros() {
+        return litros;
     }
 
     public Marca getMarca() {
         return marca;
     }
     
+    public Double contenidoDeAlcohol(){
+        return litros * (marca.graduacionAlcoholica() / 100);
+    }
 }

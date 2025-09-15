@@ -1,6 +1,5 @@
 package ar.edu.unahur.obj2.marcas.marcas;
 
-import ar.edu.unahur.obj2.marcas.Marca;
 import ar.edu.unahur.obj2.marcas.Reglamentacion;
 
 public class Hofbrau extends Marca {

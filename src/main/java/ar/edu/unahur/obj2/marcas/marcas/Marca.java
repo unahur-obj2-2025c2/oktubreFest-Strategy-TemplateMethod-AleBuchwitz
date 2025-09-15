@@ -1,4 +1,4 @@
-package ar.edu.unahur.obj2.marcas;
+package ar.edu.unahur.obj2.marcas.marcas;
 
 public abstract class Marca {
     protected Double contenidoDeLupulo;

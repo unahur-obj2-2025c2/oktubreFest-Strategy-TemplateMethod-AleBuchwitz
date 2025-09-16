@@ -3,8 +3,10 @@ package ar.edu.unahur.obj2.marcas.persona;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unahur.obj2.marcas.carpas.Carpa;
 import ar.edu.unahur.obj2.marcas.jarra.Jarra;
 import ar.edu.unahur.obj2.marcas.marcas.Marca;
+import ar.edu.unahur.obj2.marcas.nacionalidad.Aleman;
 import ar.edu.unahur.obj2.marcas.nacionalidad.Nacionalidad;
 
 public class Persona {
@@ -47,5 +49,28 @@ public class Persona {
 
     public Boolean leGustaLaMarca(Marca marca) {
         return nacionalidad.leGustaLaMarcaDeCeeveza(marca);
+    }
+
+    public Boolean esAleman(){
+        Nacionalidad aleman = new Aleman();
+        return nacionalidad.getClass() == aleman.getClass();
+    }
+
+    public Boolean quiereEntrarALaCarpa(Carpa carpa){
+        if(this.leGustaLaMarca(carpa.marcaDeCervezaQueVende()) && this.getLeGustaMusicaTradicional() && carpa.tieneMusicaTradicional()) {
+            return true;
+        }
+        else if(this.leGustaLaMarca(carpa.marcaDeCervezaQueVende()) && !this.getLeGustaMusicaTradicional() && !carpa.tieneMusicaTradicional()){
+            return true;
+        }
+        else if(this.leGustaLaMarca(carpa.marcaDeCervezaQueVende()) && this.getLeGustaMusicaTradicional() && carpa.tieneMusicaTradicional() && this.esAleman() && carpa.genteAdmitida() % 2 == 0){
+            return true;
+        }
+        else if(this.leGustaLaMarca(carpa.marcaDeCervezaQueVende()) && !this.getLeGustaMusicaTradicional() && !carpa.tieneMusicaTradicional() && this.esAleman() && carpa.genteAdmitida() % 2 == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
  }

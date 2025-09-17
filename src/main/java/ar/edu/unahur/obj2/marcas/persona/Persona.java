@@ -15,6 +15,7 @@ public class Persona {
     private Boolean leGustaMusicaTradicional;
     private Integer nivelDeAguante;
     private final Nacionalidad nacionalidad;
+    private Boolean estaAdentroDeUnaCarpa = false;
 
     public Persona(Double peso, Boolean leGustaMusicaTradicional, Integer nivelDeAguante,Nacionalidad nacionalidad) {
         this.peso = peso;
@@ -39,6 +40,14 @@ public class Persona {
         return nacionalidad;
     }
 
+    public Boolean getEstaAdentroDeUnaCarpa() {
+        return estaAdentroDeUnaCarpa;
+    }
+
+    public void consumirJarra(Jarra jarra) {
+        jarrasCompradas.add(jarra);
+    }
+
     public Boolean estaEbrio() {
         return jarrasCompradas.stream().mapToDouble(j -> j.getLitros()).sum() * peso > this.getNivelDeAguante();
     }
@@ -54,6 +63,14 @@ public class Persona {
     public Boolean esAleman(){
         Nacionalidad aleman = new Aleman();
         return nacionalidad.getClass() == aleman.getClass();
+    }
+
+    public void entrarAlaCarpa() {
+        estaAdentroDeUnaCarpa = true;
+    }
+
+    public void salirDeLaCarpa() {
+        estaAdentroDeUnaCarpa = false;
     }
 
     public Boolean quiereEntrarALaCarpa(Carpa carpa){
@@ -72,5 +89,18 @@ public class Persona {
         else{
             return false;
         }
+    }
+
+    public Boolean esEbrioEmpedernido() {
+        return jarrasCompradas.stream().allMatch(j -> j.getLitros() >= 1);
+    }
+
+    public Boolean esPatriota() {
+        return jarrasCompradas.stream().allMatch(j -> j.paisDeFabricacion() == nacionalidad.paisDeNacimiento());
+    }
+
+    public Boolean estaEntrandoEnElVicio() {
+        Double litrosDeLaPrimerJarra = jarrasCompradas.get(0).getLitros();
+        return jarrasCompradas.stream().allMatch(j -> litrosDeLaPrimerJarra >= j.getLitros());
     }
  }

@@ -22,4 +22,8 @@ public class Jarra {
     public Double contenidoDeAlcohol(){
         return litros * (marca.graduacionAlcoholica() / 100);
     }
+
+    public String paisDeFabricacion() {
+        return marca.getPaisDeFabricacion();
+    }
 }

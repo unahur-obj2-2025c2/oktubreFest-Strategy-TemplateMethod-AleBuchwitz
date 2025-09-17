@@ -4,8 +4,9 @@ import ar.edu.unahur.obj2.marcas.Reglamentacion;
 
 public class Hofbrau extends Marca {
 
-    public Hofbrau(Double contenidoDeLupudo, String pais) {
-        super(contenidoDeLupudo, pais);
+    public Hofbrau(Double contenidoDeLupudo) {
+        super(contenidoDeLupudo);
+        paisDeFabricacion = "Checoslovaquia";
     }
 
     @Override

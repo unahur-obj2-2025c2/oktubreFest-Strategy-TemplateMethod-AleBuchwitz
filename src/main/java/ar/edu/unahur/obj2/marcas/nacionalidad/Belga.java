@@ -10,4 +10,8 @@ public class Belga implements Nacionalidad {
         return marca.getContenidoDeLupulo() > 4;
     }
 
+    @Override
+    public String paisDeNacimiento() {
+        return "Belgica";
+    }
 }

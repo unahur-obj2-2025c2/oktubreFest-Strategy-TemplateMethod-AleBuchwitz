@@ -10,4 +10,8 @@ public class Aleman implements Nacionalidad {
         return true;
     }
 
+    @Override
+    public String paisDeNacimiento() {
+        return "Alemania";
+    }
 }

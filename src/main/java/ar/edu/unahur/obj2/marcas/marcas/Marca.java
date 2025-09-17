@@ -4,9 +4,8 @@ public abstract class Marca {
     protected Double contenidoDeLupulo;
     protected String paisDeFabricacion;
 
-    public Marca(Double contenidoDeLupulo, String paisDeFabricacion) {
+    public Marca(Double contenidoDeLupulo) {
         this.contenidoDeLupulo = contenidoDeLupulo;
-        this.paisDeFabricacion = paisDeFabricacion;
     }
 
     public abstract Double graduacionAlcoholica();

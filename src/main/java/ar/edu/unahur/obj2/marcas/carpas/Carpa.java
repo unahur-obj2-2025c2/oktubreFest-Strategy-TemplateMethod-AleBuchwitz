@@ -9,4 +9,6 @@ public interface Carpa {
     public Integer genteAdmitida();
     public Boolean dejarIngresarPersona(Persona persona);
     public Boolean puedeEntrar(Persona persona);
+    public void entrar(Persona persona);
+    public Boolean esHomogenea();
 }

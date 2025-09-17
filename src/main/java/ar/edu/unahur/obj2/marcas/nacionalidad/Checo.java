@@ -10,4 +10,8 @@ public class Checo implements Nacionalidad {
         return marca.graduacionAlcoholica() > 8;
     }
 
+    @Override
+    public String paisDeNacimiento() {
+        return "Checoslovaquia";
+    }
 }

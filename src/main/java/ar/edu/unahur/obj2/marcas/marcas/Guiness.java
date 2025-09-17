@@ -4,8 +4,9 @@ import ar.edu.unahur.obj2.marcas.Reglamentacion;
 
 public class Guiness extends Marca {
 
-    public Guiness(Double contenidoDeLupudo, String pais) {
-        super(contenidoDeLupudo, pais);
+    public Guiness(Double contenidoDeLupudo) {
+        super(contenidoDeLupudo);
+        paisDeFabricacion = "Belgica";
     }
     
     @Override

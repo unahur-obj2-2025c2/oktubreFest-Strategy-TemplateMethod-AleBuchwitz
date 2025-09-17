@@ -1,7 +1,9 @@
 package ar.edu.unahur.obj2.marcas.persona;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import ar.edu.unahur.obj2.marcas.carpas.Carpa;
 import ar.edu.unahur.obj2.marcas.jarra.Jarra;
@@ -24,6 +26,10 @@ public class Persona {
         this.nacionalidad = nacionalidad;
     }
     
+    public List<Jarra> getJarrasCompradas(){
+        return jarrasCompradas;
+    }
+
     public Double getPeso() {
         return peso;
     }
@@ -102,5 +108,31 @@ public class Persona {
     public Boolean estaEntrandoEnElVicio() {
         Double litrosDeLaPrimerJarra = jarrasCompradas.get(0).getLitros();
         return jarrasCompradas.stream().allMatch(j -> litrosDeLaPrimerJarra >= j.getLitros());
+    }
+
+    public List<Carpa> carpasQueLeSirvieronCerveza() {
+        List<Carpa> carpasDondeCompreCervezas = new ArrayList<>();
+        for(Jarra jarra : jarrasCompradas){
+            if(!carpasDondeCompreCervezas.contains(jarra.getCarpa())) {
+                carpasDondeCompreCervezas.add(jarra.getCarpa());
+            }
+        }
+        return carpasDondeCompreCervezas;
+    }
+
+    public Set<Marca> marcasQueCompro() {
+        Set<Marca> marcasCompradas = new HashSet<>();
+        for(Jarra jarra : jarrasCompradas) {
+            marcasCompradas.add(jarra.getMarca());
+        }
+        return marcasCompradas;
+    }
+
+    public Boolean sonCompatiblescon_(Persona persona) {
+        Set<Marca> coincidencias = new HashSet<>(this.marcasQueCompro());
+        coincidencias.retainAll(persona.marcasQueCompro());
+        Set<Marca> diferencias = new HashSet<>(persona.marcasQueCompro());
+        diferencias.removeAll(coincidencias);
+        return coincidencias.size() > diferencias.size();
     }
  }

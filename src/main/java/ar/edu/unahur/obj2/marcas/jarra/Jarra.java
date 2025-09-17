@@ -1,14 +1,17 @@
 package ar.edu.unahur.obj2.marcas.jarra;
 
+import ar.edu.unahur.obj2.marcas.carpas.Carpa;
 import ar.edu.unahur.obj2.marcas.marcas.Marca;
 
 public class Jarra {
     private Double litros;
     private Marca marca;
+    private Carpa carpa;
     
-    public Jarra(Double capacidadDeLitros, Marca marca) {
+    public Jarra(Double capacidadDeLitros, Marca marca, Carpa carpa) {
         this.litros = capacidadDeLitros;
         this.marca = marca;
+        this.carpa = carpa;
     }
 
     public Double getLitros() {
@@ -25,5 +28,9 @@ public class Jarra {
 
     public String paisDeFabricacion() {
         return marca.getPaisDeFabricacion();
+    }
+
+    public Carpa getCarpa() {
+        return carpa;
     }
 }

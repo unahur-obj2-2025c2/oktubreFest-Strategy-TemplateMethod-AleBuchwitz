@@ -64,7 +64,7 @@ public class CarpaCervecera implements Carpa {
     }
 
     public void servirUnaJarraAPersona(Persona persona,Double litros) {
-        Jarra jarra = new Jarra(litros, marcaDeCervezaQueVende);
+        Jarra jarra = new Jarra(litros, marcaDeCervezaQueVende, this);
         if(this.puedeEntrar(persona)) {
             persona.consumirJarra(jarra);
         }
@@ -80,5 +80,18 @@ public class CarpaCervecera implements Carpa {
     public Boolean esHomogenea() {
         Nacionalidad nacionalidadDeLaPrimerPersona = personasAdentro.get(0).getNacionalidad();
         return personasAdentro.stream().allMatch(p -> p.getNacionalidad().equals(nacionalidadDeLaPrimerPersona));
+    }
+
+    public List<Persona> personasSinServirleCerveza() {
+        List<Persona> personasSinCerveza = new ArrayList<>();
+        for(Persona persona : personasAdentro) {
+            for(Jarra jarra : persona.getJarrasCompradas()) {
+                if(!jarra.getCarpa().equals(this)) {
+                    personasSinCerveza.add(persona);
+                    break;
+                }
+            }
+        }
+        return personasSinCerveza;
     }
 }
